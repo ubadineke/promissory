@@ -1,0 +1,27 @@
+[package]
+name = "promissory-app"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+promissory-core = { path = "../promissory-core" }
+zcash_protocol.workspace = true
+tokio = { workspace = true, features = ["signal", "sync", "net"] }
+anyhow.workspace = true
+clap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+axum = { version = "0.8", default-features = false, features = ["http1", "json", "tokio", "query"] }
+tower-http = { version = "0.6", features = ["fs"] }
+tracing = "0.1"
+rusqlite = "0.37"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[features]
+tor = ["promissory-core/tor"]
+
+[dev-dependencies]
+tower = { version = "0.5", features = ["util"] }
+http-body-util = "0.1"

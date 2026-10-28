@@ -1,0 +1,182 @@
+@import "tailwindcss";
+/* Self-hosted: a privacy product should not ask a font CDN for every page view. */
+@import "@fontsource-variable/bricolage-grotesque/opsz.css";
+@import "@fontsource-variable/hanken-grotesk";
+@import "@fontsource/dm-mono/400.css";
+@import "@fontsource/dm-mono/500.css";
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-dawn: var(--dawn);
+  --color-dawn-ink: var(--dawn-ink);
+  --color-dawn-soft: var(--dawn-soft);
+  --color-sky: var(--sky);
+  --color-ink: var(--ink);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-solid: var(--danger-solid);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-ring: var(--ring);
+  --font-sans: "Hanken Grotesk Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Daybreak: paper, sky, dawn, midnight. */
+:root {
+  --bg: #f6f3ee;
+  --surface: #ffffff;
+  --surface-2: #f1ece3;
+  --fg: #14213d;
+  --muted: #4a5470;
+  --border: #e8e1d5;
+  --border-strong: #d3c9b8;
+  --accent: #14213d;
+  --accent-hover: #22335c;
+  --accent-fg: #f6f3ee;
+  --accent-soft: #e6edf9;
+  --dawn: #f2a65a;
+  --dawn-ink: #8a4a12;
+  --dawn-soft: #fff1e3;
+  --sky: #dce6f7;
+  /* Always dark, whatever the theme: text on dawn, the logo's night sky. */
+  --ink: #14213d;
+  --danger: #8a2414;
+  --danger-soft: #fbe3de;
+  --danger-solid: #b4321f;
+  --warn: #7f4600;
+  --warn-soft: #fdefd9;
+  --ok: #1e5a40;
+  --ok-soft: #e3f1ea;
+  --ring: #c2661a;
+  --hero: linear-gradient(120deg, #dce6f7 0%, #f6e1cc 68%, #f2c08f 100%);
+  --wash: radial-gradient(1100px 420px at 50% -160px, #dce6f7 0%, rgb(220 230 247 / 0) 100%);
+  --glass: rgb(255 255 255 / 0.55);
+  --glass-edge: rgb(255 255 255 / 0.85);
+  --sky-fade: linear-gradient(180deg, #dce6f7 0%, #f3e4d4 48%, #f6f3ee 100%);
+  color-scheme: light;
+}
+
+/* Night: the same sky an hour before sunrise. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1526;
+    --surface: #141e36;
+    --surface-2: #1b2744;
+    --fg: #f3eee6;
+    --muted: #aab4ca;
+    --border: #25335a;
+    --border-strong: #35466f;
+    --accent: #f2a65a;
+    --accent-hover: #f6b97a;
+    --accent-fg: #1a1206;
+    --accent-soft: #2f2a2c;
+    --dawn: #f2a65a;
+    --dawn-ink: #f6b97a;
+    --dawn-soft: #2e241c;
+    --sky: #1b2a4d;
+    --danger: #ff9e8c;
+    --danger-soft: #3b1b1b;
+    --danger-solid: #d9472f;
+    --warn: #f5c26b;
+    --warn-soft: #33270f;
+    --ok: #74d6a6;
+    --ok-soft: #10302a;
+    --ring: #f2a65a;
+    --hero: linear-gradient(120deg, #1b2a4d 0%, #36304a 62%, #6b4130 100%);
+    --wash: radial-gradient(1100px 420px at 50% -160px, #1b2a4d 0%, rgb(27 42 77 / 0) 100%);
+    --glass: rgb(20 30 54 / 0.55);
+    --glass-edge: rgb(255 255 255 / 0.14);
+    --sky-fade: linear-gradient(180deg, #1b2a4d 0%, #2c2638 48%, #0d1526 100%);
+    color-scheme: dark;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--wash), var(--bg);
+  background-repeat: no-repeat;
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+/* Native dialog backdrop follows the theme. */
+dialog::backdrop {
+  background: rgb(13 21 38 / 0.5);
+  backdrop-filter: blur(3px);
+}
+
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-edge);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .anim-in {
+    animation: anim-in 160ms ease-out;
+  }
+  @keyframes anim-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+
+  /* The one moment the app animates: a padlock opening. */
+  .unlock .shackle {
+    animation: shackle 700ms cubic-bezier(0.2, 0.9, 0.3, 1.3) both;
+    transform-origin: 70% 100%;
+  }
+  .unlock .glow {
+    animation: glow 1200ms ease-out both;
+  }
+  @keyframes shackle {
+    from {
+      transform: translateY(3px) rotate(0deg);
+    }
+  }
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 0 0 rgb(242 166 90 / 0.65);
+    }
+    to {
+      box-shadow: 0 0 0 14px rgb(242 166 90 / 0);
+    }
+  }
+
+  .rise {
+    animation: rise 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+  }
+}

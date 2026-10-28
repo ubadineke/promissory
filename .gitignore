@@ -1,0 +1,20 @@
+# Build output
+target/
+target-*/
+node_modules/
+dist/
+
+# Wallets, seeds and keeper databases: never commit
+promissory-data/
+promissory-data-*/
+promissory-payee-view*/
+seed.hex
+*.db
+*.db-shm
+*.db-wal
+
+# Generated regtest configs
+regtest/.zebrad.toml
+regtest/.zebrad-nu7.toml
+
+.DS_Store

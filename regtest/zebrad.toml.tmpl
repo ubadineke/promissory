@@ -1,0 +1,30 @@
+# Zebra regtest node for Promissory local testing.
+# Every upgrade through NU6.3 (Ironwood) is active from block 1, like mainnet today.
+# NU7 is far away so this chain stays on the NU6.3 branch; the NU7 gate uses its own chain.
+
+[mining]
+miner_address = "__MINER_ADDRESS__"
+
+[network]
+network = "Regtest"
+listen_addr = "127.0.0.1:18344"
+
+[network.testnet_parameters.activation_heights]
+Canopy = 1
+NU5 = 1
+NU6 = 1
+"NU6.1" = 1
+"NU6.2" = 1
+"NU6.3" = 1
+NU7 = __NU7_HEIGHT__
+
+[rpc]
+listen_addr = "0.0.0.0:18232"
+enable_cookie_auth = false
+
+[state]
+cache_dir = "/home/zebra/.cache/zebra"
+ephemeral = false
+
+[tracing]
+use_color = false

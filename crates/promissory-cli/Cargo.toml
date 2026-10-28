@@ -1,0 +1,23 @@
+[package]
+name = "promissory-cli"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "promissory"
+path = "src/main.rs"
+
+[dependencies]
+promissory-core = { path = "../promissory-core" }
+zcash_primitives.workspace = true
+zcash_protocol.workspace = true
+tokio.workspace = true
+anyhow.workspace = true
+clap.workspace = true
+hex.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[features]
+tor = ["promissory-core/tor"]

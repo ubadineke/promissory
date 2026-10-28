@@ -1,0 +1,31 @@
+[workspace]
+resolver = "2"
+members = ["crates/promissory-core", "crates/promissory-cli", "crates/promissory-keeper", "crates/promissory-app", "crates/promissory-mcp"]
+
+[workspace.package]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+# librustzcash release of 2026-10-21 (Ironwood / NU6.3, NU7 heights included)
+zcash_client_backend = { version = "0.25", features = ["sync", "pczt", "orchard"] }
+zcash_client_sqlite = { version = "0.23", features = ["orchard", "transparent-inputs", "serde"] }
+zcash_primitives = "0.31"
+zcash_protocol = { version = "0.11", features = ["local-consensus"] }
+zcash_keys = { version = "0.17", features = ["orchard"] }
+pczt = "0.10"
+orchard = "0.16"
+tlock_age = "0.0.10"
+drand_core = "0.0.19"
+
+tonic = { version = "0.14", default-features = false, features = ["transport", "tls-ring", "tls-webpki-roots", "codegen"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time"] }
+async-trait = "0.1"
+rand = "0.10"
+secrecy = "0.8"
+hex = "0.4"
+anyhow = "1"
+thiserror = "2"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
